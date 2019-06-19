@@ -11,6 +11,7 @@ $ sequelize db:drop
 $ sequelize db:create
 $ sequelize db:migrate
 $ sequelize db:seed:all
+$npm start
 ```
 ** Hay realizar todos estos procesos para inicializar las tablas.Con estos procesos
 ** primero inicializamos  la tabla Usuarios y despues la tabla Tareas.
