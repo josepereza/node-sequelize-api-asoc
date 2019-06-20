@@ -4,17 +4,31 @@ simple asociacion de 1:n  - hasMany / belongTo
 
 Globally
 
-Install CLI globally with
+Instalamos sequelize-cli globalmente con:
 ```ruby
 $ npm install -g sequelize-cli
+```
+**Hay realizar ejecutar los siguientes procesos para inicializar las tablas(sin foreign key):
+
+```ruby
 $ sequelize db:drop
 $ sequelize db:create
 $ sequelize db:migrate
 $ sequelize db:seed:all
 $ npm start
 ```
-** Hay realizar todos estos procesos para inicializar las tablas.Con estos procesos
-** primero inicializamos  la tabla Usuarios y despues la tabla Tareas.
+**Si queremos que se cree tambien la clave foranea (foreign key) tenmos que omitir el paso "$ sequelize db:create" 
+y crear nosotros manualmente la base de datos. Los pasos serian:
+```ruby
+$ sequelize db:drop 
+mysql>create database seq_db;
+$ npm start (nos salimos)
+$ sequelize db:seed:all
+$ npm start
+```
+
+
+
 
 Este seria un ejemplo de un listado completo de usuarios con todas sus tareas:
 http://miip:3000/usuarios/lista_completa
