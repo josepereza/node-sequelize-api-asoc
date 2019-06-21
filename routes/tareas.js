@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
-const Usuario=require('../models').Usuario
-const Tarea=require('../models').Tarea
+var models = require("../models");
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+
 
 
 router.get('/', function(req, res) {
@@ -12,7 +12,7 @@ router.get('/', function(req, res) {
   
     router.post("/tarea", (req, res) => {
     console.log(req.body.nombre);
-     Tarea.create({
+     models.Tarea.create({
         titulo: req.body.titulo,
         descripcion: req.body.descripcion,
         UsuarioId: req.body.UsuarioId
@@ -20,7 +20,7 @@ router.get('/', function(req, res) {
     });
   
     router.put( "/tarea/:id", (req, res) =>
-      Tarea.update({
+      models.Tarea.update({
         titulo: req.body.titulo,
         descripcion: req.body.descripcion,
         UsuarioId: req.body.UsuarioId
@@ -33,7 +33,7 @@ router.get('/', function(req, res) {
     );
   
     router.delete( "/tarea/:id", (req, res) =>
-      Tarea.destroy({
+      models.Tarea.destroy({
         where: {
             id:{ [Op.eq]: req.params.id}
           }
@@ -41,17 +41,17 @@ router.get('/', function(req, res) {
     );
   
     router.get( "/tarea/:id", (req, res) =>
-      Tarea.findByPk(req.params.id).then( (result) => res.json(result))
+      models.Tarea.findByPk(req.params.id).then( (result) => res.json(result))
   );
   router.get( "/listado", (req, res) =>
-      Tarea.findAll().then( (result) => res.json(result))
+      models.Tarea.findAll().then( (result) => res.json(result))
   );
 
 
   router.get("/lista_completa",(req,res)=>{
-    Tarea.findAll({
+    models.Tarea.findAll({
       include: [{
-          model: Usuario
+          model: models.Usuario
          
       }]
     }).then((result)=> res.json(result))
