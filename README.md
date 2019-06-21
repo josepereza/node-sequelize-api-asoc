@@ -6,6 +6,7 @@ Globally
 
 Instalamos sequelize-cli globalmente con:
 ```ruby
+$ npm install
 $ npm install -g sequelize-cli
 ```
 **Hay realizar ejecutar los siguientes procesos para inicializar las tablas(sin foreign key):
